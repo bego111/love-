@@ -4,346 +4,596 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Mai ♡</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<title>For Mai ❤️</title>
 
 <style>
+:root {
+  --pink: #d982a2;
+  --deep: #a94e72;
+  --light: #fff1f5;
+  --cream: #fffaf5;
+  --text: #654653;
+}
+
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+html {
   scroll-behavior: smooth;
 }
 
 body {
-  background: #fff8f6;
-  color: #694b5b;
-  font-family: 'Poppins', sans-serif;
+  font-family: Georgia, serif;
+  background: var(--cream);
+  color: var(--text);
 }
 
-/* ENVELOPE INTRO */
-
-#intro {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  background: linear-gradient(135deg, #fff0f3, #f8dce5);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: opacity 1s ease, visibility 1s;
-}
-
-#intro.hide {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.intro-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 30px;
-  margin-bottom: 45px;
-  color: #80576b;
-}
-
-.envelope {
-  position: relative;
-  width: 270px;
-  height: 175px;
-  background: #d99db6;
-  border-radius: 5px;
-  cursor: pointer;
-  box-shadow: 0 15px 35px #b77e963d;
-}
-
-.envelope::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-left: 135px solid transparent;
-  border-right: 135px solid transparent;
-  border-top: 105px solid #e9b9ca;
-  transform-origin: top;
-  transition: transform 0.8s;
-  z-index: 4;
-}
-
-.envelope.open::before {
-  transform: rotateX(180deg);
-  z-index: 1;
-}
-
-.envelope::after {
-  content: "♡";
-  position: absolute;
-  top: 65px;
-  left: 112px;
-  font-size: 40px;
-  color: white;
-  z-index: 5;
-}
-
-.letter {
-  position: absolute;
-  width: 230px;
-  height: 145px;
-  background: #fffdfb;
-  left: 20px;
-  top: 15px;
-  border-radius: 5px;
-  transition: transform 1s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 15px;
-  font-family: 'Playfair Display', serif;
-  z-index: 2;
-}
-
-.envelope.open .letter {
-  transform: translateY(-115px);
-}
-
-.open-text {
-  margin-top: 35px;
-  color: #80576b;
-  font-size: 14px;
-}
-
-/* MAIN WEBSITE */
-
-#website {
-  display: none;
-  animation: fadeIn 1.5s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-nav {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 23px;
-  padding: 25px 12px;
-  background: #fffaf8;
-}
-
-nav a {
-  text-decoration: none;
-  color: #80576b;
-  font-size: 13px;
-}
-
-nav a:hover {
-  color: #c17e9b;
-}
-
-header {
-  min-height: 75vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 30px 20px;
-}
-
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(48px, 9vw, 85px);
-  color: #704b61;
-  margin-bottom: 20px;
-}
-
-header p {
-  max-width: 550px;
-  line-height: 2;
-  font-size: 15px;
-}
-
-.main-button {
-  display: inline-block;
-  margin-top: 30px;
-  background: #b985a0;
-  color: white;
-  padding: 13px 30px;
-  border-radius: 30px;
-  text-decoration: none;
-  border: none;
+button {
   cursor: pointer;
   font-family: inherit;
 }
 
-section {
-  padding: 75px 20px;
-  max-width: 850px;
-  margin: auto;
+#intro {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
   text-align: center;
+  background: linear-gradient(135deg, #fff0f4, #fffaf5);
 }
 
-section h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 35px;
-  color: #80576b;
-  margin-bottom: 25px;
+.envelope {
+  width: 230px;
+  height: 150px;
+  background: #e9a7bd;
+  position: relative;
+  border-radius: 5px;
+  margin: 35px 0;
+  box-shadow: 0 12px 30px #d982a244;
+  cursor: pointer;
+  transition: .4s;
+}
+
+.envelope:hover {
+  transform: translateY(-7px);
+}
+
+.envelope:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 115px solid transparent;
+  border-right: 115px solid transparent;
+  border-top: 85px solid #d982a2;
+  z-index: 2;
+}
+
+.envelope:after {
+  content: "♥";
+  position: absolute;
+  top: 58px;
+  left: 95px;
+  font-size: 40px;
+  color: white;
+  z-index: 3;
+}
+
+#intro h1 {
+  font-size: 36px;
+  color: var(--deep);
+  margin-bottom: 12px;
+}
+
+#intro p {
+  color: #9c6b7c;
+}
+
+.open-btn {
+  border: none;
+  background: var(--deep);
+  color: white;
+  padding: 13px 30px;
+  border-radius: 30px;
+  font-size: 16px;
+  margin-top: 15px;
+}
+
+#website {
+  display: none;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fffaf5ee;
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 15px 8px;
+  box-shadow: 0 2px 15px #00000008;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--deep);
+  font-size: 13px;
+  padding: 8px 12px;
+  border-radius: 20px;
+}
+
+nav a:hover {
+  background: var(--light);
+}
+
+section {
+  padding: 85px 20px;
+  text-align: center;
+  scroll-margin-top: 65px;
+}
+
+.hero {
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fff0f4, #fffaf5);
+}
+
+.hero h1 {
+  font-size: clamp(40px, 8vw, 65px);
+  color: var(--deep);
+  margin-bottom: 18px;
+}
+
+.hero p {
+  max-width: 500px;
+  line-height: 1.9;
+  font-size: 17px;
+}
+
+.section-title {
+  font-size: 34px;
+  color: var(--deep);
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  color: #a57b89;
+  margin-bottom: 35px;
+  line-height: 1.7;
+}
+
+.counter-section {
+  background: #fff0f4;
+}
+
+.counter-card {
+  max-width: 420px;
+  margin: auto;
+  padding: 35px 20px;
+  background: white;
+  border-radius: 25px;
+  box-shadow: 0 10px 35px #d982a222;
+}
+
+.counter-number {
+  font-size: clamp(65px, 15vw, 95px);
+  font-weight: bold;
+  color: var(--pink);
+  line-height: 1.2;
+}
+
+.counter-label {
+  font-size: 20px;
+  color: var(--deep);
+  margin-top: 5px;
+}
+
+.counter-date {
+  color: #a57b89;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.counter-heart {
+  font-size: 28px;
+  margin-top: 18px;
+}
+
+.cards {
+  max-width: 950px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
 }
 
 .card {
   background: white;
-  padding: 30px;
-  border-radius: 15px;
-  margin: 20px auto;
-  line-height: 2;
-  box-shadow: 0 5px 25px #a77b8b12;
+  border: 1px solid #f4dce5;
+  padding: 28px 20px;
+  border-radius: 20px;
+  box-shadow: 0 7px 22px #00000008;
+  transition: .3s;
 }
 
-.letter-message {
-  text-align: left;
-  white-space: pre-line;
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px #d982a222;
+}
+
+.card .emoji {
+  font-size: 35px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  color: var(--deep);
+  margin-bottom: 10px;
+}
+
+.card p {
+  line-height: 1.7;
   font-size: 14px;
+  color: #8b6976;
 }
 
-.song-item, .memory-item {
-  padding: 15px;
-  border-bottom: 1px solid #f2dce5;
+.letter-section {
+  background: #fff5f7;
 }
 
-.surprise {
-  display: none;
-  margin-top: 25px;
-  font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  color: #a56c88;
-  line-height: 1.8;
+.letter {
+  max-width: 720px;
+  margin: auto;
+  background: white;
+  padding: 35px;
+  border-radius: 22px;
+  line-height: 2;
+  text-align: left;
+  box-shadow: 0 8px 25px #00000008;
+  font-size: 15px;
+}
+
+.letter h3 {
+  color: var(--deep);
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 25px;
+}
+
+.day-card {
+  max-width: 600px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 20px;
+  background: white;
+  line-height: 2;
+}
+
+.surprise-btn {
+  background: var(--deep);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 14px 28px;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+#surpriseMessage {
+  margin: 25px auto 0;
+  max-width: 450px;
+  line-height: 1.9;
+  color: var(--deep);
+  font-size: 18px;
+}
+
+.video-placeholder {
+  max-width: 500px;
+  margin: auto;
+  padding: 45px 20px;
+  background: white;
+  border-radius: 20px;
+  border: 1px dashed #d982a2;
+  line-height: 1.9;
 }
 
 footer {
+  padding: 35px 15px;
   text-align: center;
-  padding: 35px;
-  color: #a27c8d;
-  font-size: 13px;
+  background: #fff0f4;
+  color: var(--deep);
+  line-height: 2;
+}
+
+@media(max-width: 600px) {
+  nav {
+    gap: 2px;
+  }
+
+  nav a {
+    font-size: 11px;
+    padding: 8px;
+  }
+
+  section {
+    padding: 65px 16px;
+  }
+
+  .letter {
+    padding: 23px;
+    font-size: 14px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- ENVELOPE -->
-
+<!-- Envelope intro -->
 <div id="intro">
-  <div class="intro-title">A Little Letter For Mai ♡</div>
+  <h1>For Mai ❤️</h1>
+  <p>A little place made with love, just for you.</p>
 
-  <div class="envelope" id="envelope" onclick="openLetter()">
-    <div class="letter">
-      <div>For my favorite person ♡</div>
-    </div>
-  </div>
+  <div class="envelope" onclick="openWebsite()"></div>
 
-  <p class="open-text">Click the envelope to open your letter ♡</p>
+  <button class="open-btn" onclick="openWebsite()">
+    Open Your Letter ♥
+  </button>
 </div>
 
-<!-- WEBSITE -->
-
+<!-- Main website -->
 <div id="website">
 
 <nav>
   <a href="#home">Home</a>
+  <a href="#counter">Our Story</a>
   <a href="#memories">Memories</a>
   <a href="#songs">Songs</a>
   <a href="#letters">Letters</a>
   <a href="#days">Our Days</a>
   <a href="#surprises">Surprises</a>
+  <a href="#videos">Videos</a>
 </nav>
 
-<header id="home">
-  <h1>For Mai ♡</h1>
+<!-- Home -->
+<section class="hero" id="home">
+  <h1>Hi, Mai ❤️</h1>
   <p>
-    A little place on the internet, made with love, just for you.
-    Every memory has a story, and every story reminds me of you.
+    Welcome to our little world.
+    A place for our memories, our moments,
+    our words, and everything that makes
+    our story special.
   </p>
-  <a class="main-button" href="#memories">Explore our little world ♡</a>
-</header>
+</section>
 
+<!-- Counter -->
+<section class="counter-section" id="counter">
+  <h2 class="section-title">Our Story ❤️</h2>
+  <p class="subtitle">Every day is another beautiful page.</p>
+
+  <div class="counter-card">
+    <div class="counter-number" id="daysCounter">0</div>
+    <div class="counter-label">Days Together</div>
+    <div class="counter-date">Since May 18, 2026</div>
+    <div class="counter-heart">♥</div>
+    <p class="subtitle" style="margin:15px 0 0">
+      And counting...
+    </p>
+  </div>
+</section>
+
+<!-- Memories -->
 <section id="memories">
-  <h2>Our Memories</h2>
-  <div class="card">
-    <div class="memory-item">The day we first talked ♡</div>
-    <div class="memory-item">A moment I'll never forget</div>
-    <div class="memory-item">All the little things that matter</div>
-    <p style="margin-top:20px">
-      More memories are waiting to be added...
-    </p>
-  </div>
-</section>
+  <h2 class="section-title">Our Memories</h2>
+  <p class="subtitle">Little moments that mean everything.</p>
 
-<section id="songs">
-  <h2>Our Songs</h2>
-  <div class="card">
-    <div class="song-item">♡ Our special song</div>
-    <div class="song-item">♡ A song that reminds me of you</div>
-    <p style="margin-top:15px">
-      Our own little soundtrack.
-    </p>
-  </div>
-</section>
+  <div class="cards">
 
-<section id="letters">
-  <h2>A Letter For You</h2>
-  <div class="card letter-message">
-i love you so much, my love. more than you’ll ever know. sometimes i don’t even know how to put everything i feel into words because no matter what i say, it never feels enough. you mean so much to me, and loving you has become one of the most natural things i’ve ever done. you’re always on my mind, whether we’re talking, laughing, or even sitting in silence. thank you for staying, for loving me, and for choosing me every single day. i know i’m not perfect, and there are times when i make mistakes or don’t express myself the way i should, but please know that my love for you has never been fake. every “ i love you” i say comes from the deepest part of my heart. i want you to know that you’re important to me. your happiness matters, your feelings matter, and i’ll always try my best to be someone who makes you feel safe, loved, and appreciated. i want to be the person you can come home to after a long day, the one who celebrates your happiest moments and stays by your side through the hardest ones. if loving you means choosing you over and over again, then i’ll keep choosing you. not because i have to, but because i want to. because no matter how many people there are in this world, my heart still, finds its way back to you. i don’t know what tomorrow holds, but one thing i’m sure of is that i’ll never stop loving you with everything i have. thank you for being my comfort, my happiness, and my favorite person. i love you so much, my love. more than you’ll ever know, more than words could ever explain, and more than my heart could ever fully show. always.
-  </div>
-</section>
-
-<section id="days">
-  <h2>Our Days ♡</h2>
-  <div class="card">
-    <p>Every day is a new page in our story.</p>
-    <p style="margin-top:15px">More beautiful days are waiting for us.</p>
-  </div>
-</section>
-
-<section id="surprises">
-  <h2>A Little Surprise</h2>
-  <div class="card">
-    <p>There is something waiting for you...</p>
-    <button class="main-button" onclick="showSurprise()">
-      Open your surprise ♡
-    </button>
-    <div class="surprise" id="surprise">
-      You are one of my favorite parts of life. ♡
-      <br>
-      I'm so glad our paths crossed.
+    <div class="card">
+      <div class="emoji">💗</div>
+      <h3>The Beginning</h3>
+      <p>The day our story started and everything became a little more special.</p>
     </div>
+
+    <div class="card">
+      <div class="emoji">🌷</div>
+      <h3>Our Conversations</h3>
+      <p>All those little talks that can make an ordinary day unforgettable.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">✨</div>
+      <h3>Favorite Moments</h3>
+      <p>Every moment with you deserves a special place in our story.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🧸</div>
+      <h3>More to Come</h3>
+      <p>There are still so many memories waiting for us.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Songs -->
+<section id="songs" style="background:#fff5f7">
+  <h2 class="section-title">Our Songs 🎵</h2>
+  <p class="subtitle">Songs that remind us of special moments.</p>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="emoji">🎧</div>
+      <h3>Our First Song</h3>
+      <p>Add your favorite song here.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🎶</div>
+      <h3>A Song for You</h3>
+      <p>A song that always reminds me of you.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">💞</div>
+      <h3>Our Playlist</h3>
+      <p>More songs, more memories.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Letters -->
+<section class="letter-section" id="letters">
+  <h2 class="section-title">Love Letters 💌</h2>
+  <p class="subtitle">Some feelings deserve more than a simple message.</p>
+
+  <div class="letter">
+    <h3>To My Favorite Person ❤️</h3>
+
+    <p>
+      i love you so much, my love. more than you’ll ever know.
+      sometimes i don’t even know how to put everything i feel into words
+      because no matter what i say, it never feels enough. you mean so much
+      to me, and loving you has become one of the most natural things i’ve
+      ever done. you’re always on my mind, whether we’re talking, laughing,
+      or even sitting in silence.
+    </p>
+
+    <p>
+      thank you for staying, for loving me, and for choosing me every single
+      day. i know i’m not perfect, and there are times when i make mistakes
+      or don’t express myself the way i should, but please know that my love
+      for you has never been fake. every “ i love you” i say comes from the
+      deepest part of my heart.
+    </p>
+
+    <p>
+      i want you to know that you’re important to me. your happiness matters,
+      your feelings matter, and i’ll always try my best to be someone who
+      makes you feel safe, loved, and appreciated. i want to be the person
+      you can come home to after a long day, the one who celebrates your
+      happiest moments and stays by your side through the hardest ones.
+    </p>
+
+    <p>
+      if loving you means choosing you over and over again, then i’ll keep
+      choosing you. not because i have to, but because i want to. because
+      no matter how many people there are in this world, my heart still,
+      finds its way back to you.
+    </p>
+
+    <p>
+      i don’t know what tomorrow holds, but one thing i’m sure of is that
+      i’ll never stop loving you with everything i have. thank you for being
+      my comfort, my happiness, and my favorite person.
+    </p>
+
+    <p>
+      i love you so much, my love. more than you’ll ever know, more than
+      words could ever explain, and more than my heart could ever fully show.
+      always.
+    </p>
+  </div>
+</section>
+
+<!-- Our Days -->
+<section id="days">
+  <h2 class="section-title">Our Days 📅</h2>
+  <p class="subtitle">A date worth remembering forever.</p>
+
+  <div class="day-card">
+    <h3 style="color:#a94e72;font-size:25px">May 18, 2026</h3>
+    <p>The day our story began ❤️</p>
+    <p>One date. A thousand feelings. Countless memories.</p>
+  </div>
+</section>
+
+<!-- Surprises -->
+<section id="surprises" style="background:#fff5f7">
+  <h2 class="section-title">Little Surprises 🎁</h2>
+  <p class="subtitle">A little something whenever you need a smile.</p>
+
+  <button class="surprise-btn" onclick="showSurprise()">
+    Open Your Surprise ♥
+  </button>
+
+  <div id="surpriseMessage"></div>
+</section>
+
+<!-- Videos -->
+<section id="videos">
+  <h2 class="section-title">Our Videos 🎬</h2>
+  <p class="subtitle">A place for moments we want to watch again.</p>
+
+  <div class="video-placeholder">
+    <div style="font-size:40px">🎥</div>
+    <h3 style="color:#a94e72">Our Little Memories</h3>
+    <p>Our favorite videos will have a home here.</p>
   </div>
 </section>
 
 <footer>
-  Made with love, just for Mai ♡
+  Made with love, just for Mai ❤️
+  <br>
+  Our story is still being written...
 </footer>
 
 </div>
 
 <script>
-function openLetter() {
-  const envelope = document.getElementById("envelope");
-  envelope.classList.add("open");
 
-  setTimeout(function() {
-    document.getElementById("intro").classList.add("hide");
-    document.getElementById("website").style.display = "block";
-  }, 1800);
+// Open the website
+function openWebsite() {
+  document.getElementById("intro").style.display = "none";
+  document.getElementById("website").style.display = "block";
+  window.scrollTo(0, 0);
 }
+
+// Days counter
+function updateCounter() {
+  const startDate = new Date(2026, 4, 18);
+  const today = new Date();
+
+  startDate.setHours(0, 0, 0, 0);
+  today.setHours(0, 0, 0, 0);
+
+  const difference = today - startDate;
+  const days = Math.max(0, Math.floor(difference / (1000 * 60 * 60 * 24)));
+
+  document.getElementById("daysCounter").textContent = days;
+}
+
+updateCounter();
+
+// Surprise messages
+const surprises = [
+  "You make ordinary days feel special. ❤️",
+  "If I could choose again, I'd still choose you. 💗",
+  "You are one of my favorite parts of every day. 🌷",
+  "I hope you always find a reason to smile. ✨",
+  "Here's a little reminder: you are appreciated. 🧸",
+  "Our story has so many beautiful pages left. 💌"
+];
 
 function showSurprise() {
-  document.getElementById("surprise").style.display = "block";
+  const randomIndex = Math.floor(Math.random() * surprises.length);
+  document.getElementById("surpriseMessage").textContent =
+    surprises[randomIndex];
 }
+
 </script>
 
 </body>
