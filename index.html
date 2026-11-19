@@ -307,6 +307,15 @@ section {
   line-height: 1.9;
 }
 
+.memory-video {
+  width: 100%;
+  max-width: 500px;
+  display: block;
+  margin: 20px auto 0;
+  border-radius: 14px;
+  background: #000;
+}
+
 footer {
   padding: 35px 15px;
   text-align: center;
@@ -561,6 +570,11 @@ footer {
     <p>The day our story began ❤️</p>
     <p>One date. A thousand feelings. Countless memories.</p>
   </div>
+
+  <div class="day-card" style="margin-top:20px">
+    <h3 style="color:#a94e72;font-size:25px">August 2, 2026</h3>
+    <p>The first talk and first photo ❤️</p>
+  </div>
 </section>
 
 <!-- Surprises -->
@@ -583,7 +597,12 @@ footer {
   <div class="video-placeholder">
     <div style="font-size:40px">🎥</div>
     <h3 style="color:#a94e72">Our Little Memories</h3>
-    <p>Our favorite videos will have a home here.</p>
+    <p>A memory worth watching again. ❤️</p>
+
+    <video class="memory-video" controls playsinline preload="metadata">
+      <source src="memory.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
   </div>
 </section>
 
