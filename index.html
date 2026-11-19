@@ -7,6 +7,16 @@
 <title>For Mai ♡</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+:root {
+  --pink: #d9a7b2;
+  --deep: #865c69;
+  --cream: #fff9f5;
+  --light: #f8e9e9;
+  --text: #684d53;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -16,208 +26,755 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: Georgia, serif;
-  background: #fff8f6;
-  color: #694b50;
+  background: var(--cream);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
 }
 
-header {
-  padding: 22px;
-  text-align: center;
-  background: #f9e8e8;
-  letter-spacing: 3px;
-}
+button, a { font: inherit; }
 
-nav {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 18px;
-}
+button { cursor: pointer; }
 
-nav a {
-  color: #805b63;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.hero {
-  min-height: 75vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 30px;
-  background: linear-gradient(#fff8f6, #f8e6e8);
-}
-
-.hero h1 {
-  font-size: clamp(42px, 9vw, 75px);
-  font-weight: normal;
-  margin-bottom: 20px;
-}
-
-.hero p {
-  font-size: 18px;
-  line-height: 1.8;
-  max-width: 500px;
+h1, h2, h3, .serif {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
 }
 
 button {
-  margin-top: 28px;
-  padding: 14px 28px;
   border: none;
-  border-radius: 30px;
-  background: #b77c89;
-  color: white;
-  font-size: 15px;
-  cursor: pointer;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* INTRO */
+
+#welcome {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: linear-gradient(140deg,#fff9f5,#f4dfe5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 25px;
+  transition: opacity 1s, visibility 1s;
+}
+
+#welcome.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-content {
+  width: 100%;
+  max-width: 430px;
+}
+
+.intro-small {
+  letter-spacing: 4px;
+  font-size: 11px;
+  color: #a17b83;
+  text-transform: uppercase;
+}
+
+.intro-content h1 {
+  font-size: clamp(36px,8vw,55px);
+  margin: 18px 0 12px;
+  color: var(--deep);
+}
+
+.intro-content > p {
+  color: #98767e;
+  line-height: 1.8;
+}
+
+.envelope {
+  position: relative;
+  width: 250px;
+  height: 165px;
+  margin: 65px auto 35px;
+  background: #d5a0ad;
+  border-radius: 5px;
+  box-shadow: 0 18px 35px #936b7625;
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  background: #e6bdc5;
+}
+
+.paper {
+  position: absolute;
+  width: 86%;
+  height: 125px;
+  left: 7%;
+  top: 15px;
+  background: #fffdfa;
+  padding: 18px 10px;
+  line-height: 1.8;
+  transition: transform 1s;
+}
+
+.paper span {
+  font-family: 'Playfair Display',serif;
+  font-size: 18px;
+  color: var(--deep);
+}
+
+.envelope-front {
+  position: absolute;
+  inset: 0;
+  background: #cf96a4;
+  clip-path: polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);
+}
+
+.flap {
+  position: absolute;
+  inset: 0;
+  background: #b97d8c;
+  clip-path: polygon(0 0,100% 0,50% 65%);
+  transform-origin: top;
+  transition: transform .8s;
+}
+
+.seal {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  color: white;
+  font-size: 32px;
+}
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+}
+
+.envelope.open .paper {
+  transform: translateY(-95px);
+}
+
+.primary-btn {
+  background: var(--deep);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 40px;
+  transition: .3s;
+  box-shadow: 0 7px 20px #865c6922;
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+  background: #704956;
+}
+
+.intro-footer {
+  margin-top: 23px;
+  font-size: 12px;
+  color: #a88a91;
+}
+
+/* NAVIGATION */
+
+header {
+  background: #fffaf7ee;
+  border-bottom: 1px solid #f0e2df;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+}
+
+.navbar {
+  max-width: 1150px;
+  margin: auto;
+  padding: 20px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Playfair Display',serif;
+  font-size: 23px;
+  color: var(--deep);
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  font-size: 13px;
+  color: #876c71;
+}
+
+.nav-links a:hover { color: #bd8291; }
+
+.menu-btn {
+  display: none;
+  background: none;
+  color: var(--deep);
+  font-size: 26px;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 82vh;
+  padding: 100px 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background:
+    radial-gradient(circle at 15% 20%,#f7e6e6 0,transparent 30%),
+    radial-gradient(circle at 85% 80%,#f3e0e5 0,transparent 30%),
+    #fffaf7;
+}
+
+.hero-content { max-width: 700px; }
+
+.eyebrow {
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #b1818d;
+  font-size: 11px;
+}
+
+.hero h1 {
+  font-size: clamp(55px,10vw,100px);
+  line-height: 1.15;
+  color: var(--deep);
+  margin: 22px 0;
+}
+
+.hero h1 span { color: #c68e9d; }
+
+.hero p {
+  max-width: 510px;
+  margin: auto;
+  line-height: 2;
+  color: #96767b;
+  font-size: 16px;
+}
+
+.hero .primary-btn { margin-top: 30px; }
+
+.scroll-note {
+  margin-top: 65px;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #b18b91;
+}
+
+/* GENERAL SECTIONS */
+
 section {
-  padding: 75px 22px;
+  padding: 100px 25px;
+  scroll-margin-top: 75px;
+}
+
+.section-inner {
+  max-width: 1050px;
+  margin: auto;
   text-align: center;
 }
 
-h2 {
-  font-size: 34px;
-  font-weight: normal;
-  margin-bottom: 18px;
+.section-tag {
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #bd8793;
 }
 
-.subtitle {
-  color: #a18489;
-  margin-bottom: 30px;
+.section-title {
+  font-size: clamp(36px,6vw,53px);
+  color: var(--deep);
+  margin: 14px 0;
 }
+
+.section-desc {
+  color: #a08488;
+  line-height: 1.8;
+  margin-bottom: 42px;
+}
+
+.soft-section { background: #fbefed; }
 
 .cards {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 18px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 20px;
 }
 
 .card {
-  background: white;
-  padding: 30px;
-  border-radius: 18px;
-  width: 230px;
-  box-shadow: 0 5px 25px #e8d5d544;
+  background: #fffdfa;
+  border: 1px solid #f1e3e1;
+  padding: 35px 25px;
+  border-radius: 17px;
+  transition: .35s;
+  box-shadow: 0 8px 30px #79545a08;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px #79545a13;
+}
+
+.card-icon {
+  font-size: 28px;
+  margin-bottom: 18px;
 }
 
 .card h3 {
+  font-size: 23px;
   margin-bottom: 12px;
-  font-weight: normal;
+  color: var(--deep);
 }
 
-.letter {
-  max-width: 650px;
+.card p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #a18489;
+}
+
+/* LETTER */
+
+.letter-box {
+  max-width: 760px;
   margin: auto;
-  padding: 35px;
-  background: white;
+  background: #fffdfa;
+  border: 1px solid #f0e3df;
   border-radius: 18px;
-  line-height: 2;
-  font-size: 17px;
+  padding: clamp(25px,6vw,55px);
+  text-align: left;
+  box-shadow: 0 15px 45px #805a6010;
 }
 
-#surprise {
-  font-size: 21px;
-  margin-top: 25px;
-  min-height: 35px;
+.letter-box .greeting {
+  font-family: 'Playfair Display',serif;
+  font-size: 25px;
+  color: var(--deep);
+  margin-bottom: 25px;
 }
+
+.letter-box p {
+  line-height: 2;
+  font-size: 15px;
+  color: #80666a;
+  margin-bottom: 17px;
+}
+
+.letter-sign {
+  text-align: right;
+  font-family: 'Playfair Display',serif;
+  font-style: italic;
+  color: var(--deep);
+  font-size: 21px;
+  margin-top: 30px;
+}
+
+/* MUSIC */
+
+.song-card {
+  background: #fffdfa;
+  border: 1px solid #f0e3df;
+  border-radius: 16px;
+  padding: 30px 20px;
+}
+
+.song-disc {
+  width: 75px;
+  height: 75px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#f0cdd3,#b77c8c);
+  display: grid;
+  place-items: center;
+  color: white;
+  font-size: 28px;
+}
+
+.song-card h3 {
+  color: var(--deep);
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.song-card p {
+  color: #a18489;
+  font-size: 13px;
+}
+
+/* SURPRISE */
+
+.surprise-area {
+  background: linear-gradient(135deg,#f9e8e9,#fff7f3);
+}
+
+.surprise-message {
+  max-width: 550px;
+  margin: 30px auto 0;
+  min-height: 65px;
+  line-height: 1.9;
+  font-family: 'Playfair Display',serif;
+  font-size: 23px;
+  color: var(--deep);
+}
+
+/* FOOTER */
 
 footer {
-  padding: 30px;
+  padding: 45px 20px;
   text-align: center;
-  background: #f9e8e8;
+  background: #f7e8e7;
+  color: #98777e;
+  font-size: 13px;
+}
+
+footer .footer-heart {
+  color: #bd8291;
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+/* ANIMATIONS */
+
+.fade-in {
+  animation: fadeUp 1s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media(max-width:700px) {
+  .menu-btn { display: block; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    right: 0;
+    padding: 25px;
+    background: #fffaf7;
+    flex-direction: column;
+    border-bottom: 1px solid #f0e2df;
+  }
+
+  .nav-links.show { display: flex; }
+
+  .hero { min-height: 75vh; }
+
+  section { padding: 75px 20px; }
 }
 </style>
 </head>
 
 <body>
 
-<header>♡ A LITTLE WORLD FOR MAI ♡</header>
+<!-- OPENING LETTER -->
 
-<nav>
-  <a href="#home">Home</a>
-  <a href="#memories">Memories</a>
-  <a href="#songs">Songs</a>
-  <a href="#letters">Letters</a>
-  <a href="#calendar">Our Days</a>
-  <a href="#surprises">Surprises</a>
-</nav>
+<div id="welcome">
+  <div class="intro-content">
+    <div class="intro-small">A little something for you</div>
+    <h1>Dear Mai ♡</h1>
+    <p>Someone has a little world prepared just for you.</p>
 
-<div class="hero" id="home">
-  <h1>For Mai ♡</h1>
-  <p>
-    A little place on the internet,
-    made with love, just for you.
-    Every memory has a story,
-    and every story reminds me of you.
-  </p>
-  <button onclick="document.querySelector('#memories').scrollIntoView()">
-    Explore our little world ♡
-  </button>
+    <div class="envelope" id="envelope">
+      <div class="envelope-back"></div>
+      <div class="paper">
+        <span>For my favorite person ♡</span>
+        <p style="font-size:12px;color:#98777e">A little surprise is waiting...</p>
+      </div>
+      <div class="envelope-front"></div>
+      <div class="flap"></div>
+      <div class="seal">♥</div>
+    </div>
+
+    <button class="primary-btn" onclick="openLetter()">
+      Open your letter ♡
+    </button>
+
+    <div class="intro-footer">Made with love, only for you.</div>
+  </div>
 </div>
 
-<section id="memories">
-  <h2>Our Memories</h2>
-  <p class="subtitle">Every little moment means something.</p>
-  <div class="cards">
-    <div class="card"><h3>♡ First Memory</h3><p>Our story begins here.</p></div>
-    <div class="card"><h3>♡ Favorite Moment</h3><p>A moment worth keeping forever.</p></div>
-    <div class="card"><h3>♡ More to Come</h3><p>Our next memories are waiting.</p></div>
+<!-- NAVIGATION -->
+
+<header>
+  <nav class="navbar">
+    <a class="logo" href="#home">For Mai ♡</a>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#memories">Memories</a>
+      <a href="#songs">Songs</a>
+      <a href="#letters">Letters</a>
+      <a href="#days">Our Days</a>
+      <a href="#surprises">Surprises</a>
+    </div>
+  </nav>
+</header>
+
+<!-- HOME -->
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-content fade-in">
+    <div class="eyebrow">A little world made for you</div>
+    <h1>For <span>Mai</span> ♡</h1>
+
+    <p>
+      A little place on the internet, made with love, just for you.
+      Every memory has a story, and every story reminds me of you.
+    </p>
+
+    <a href="#memories" class="primary-btn" style="display:inline-block">
+      Explore our little world ♡
+    </a>
+
+    <div class="scroll-note">SCROLL DOWN TO EXPLORE</div>
   </div>
 </section>
 
-<section id="songs">
-  <h2>Our Songs</h2>
-  <p class="subtitle">Songs that remind me of us.</p>
-  <div class="cards">
-    <div class="card"><h3>♫ Our Song</h3><p>Our favorite song goes here.</p></div>
-    <div class="card"><h3>♫ Another Song</h3><p>A song with a special meaning.</p></div>
+<!-- MEMORIES -->
+
+<section id="memories">
+  <div class="section-inner">
+    <div class="section-tag">The little things</div>
+    <h2 class="section-title">Our Memories</h2>
+    <p class="section-desc">
+      Some moments deserve a place of their own.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">♡</div>
+        <h3>Our Beginning</h3>
+        <p>Every beautiful story has a beginning. This is ours.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">✧</div>
+        <h3>Favorite Moments</h3>
+        <p>The little moments that make ordinary days special.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">∞</div>
+        <h3>More to Come</h3>
+        <p>There are still so many beautiful memories waiting for us.</p>
+      </div>
+    </div>
   </div>
 </section>
+
+<!-- SONGS -->
+
+<section id="songs" class="soft-section">
+  <div class="section-inner">
+    <div class="section-tag">A soundtrack for us</div>
+    <h2 class="section-title">Our Songs</h2>
+    <p class="section-desc">
+      Some songs feel like memories.
+    </p>
+
+    <div class="cards">
+      <div class="song-card">
+        <div class="song-disc">♫</div>
+        <h3>Our Song</h3>
+        <p>A song that reminds me of you.</p>
+      </div>
+
+      <div class="song-card">
+        <div class="song-disc">♡</div>
+        <h3>Favorite Melody</h3>
+        <p>A melody with a special place in our story.</p>
+      </div>
+
+      <div class="song-card">
+        <div class="song-disc">♪</div>
+        <h3>Just For You</h3>
+        <p>Another song for another beautiful memory.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LETTERS -->
 
 <section id="letters">
-  <h2>Love Letters</h2>
-  <p class="subtitle">Words from my heart.</p>
-  <div class="letter">
-    My favorite person,<br><br>
-    This little website is a collection of moments,
-    feelings, and memories that I never want to lose.
-    I'm grateful for every beautiful moment we share.
-    <br><br>
-    Always with love, ♡
+  <div class="section-inner">
+    <div class="section-tag">Words from my heart</div>
+    <h2 class="section-title">Love Letters</h2>
+    <p class="section-desc">
+      Because some feelings deserve more than a simple message.
+    </p>
+
+    <div class="letter-box">
+      <div class="greeting">My love, ♡</div>
+
+      <p>
+        i love you so much, my love. more than you’ll ever know.
+        sometimes i don’t even know how to put everything i feel
+        into words because no matter what i say, it never feels enough.
+        you mean so much to me, and loving you has become one of the
+        most natural things i’ve ever done.
+      </p>
+
+      <p>
+        you’re always on my mind, whether we’re talking, laughing,
+        or even sitting in silence. thank you for staying, for loving me,
+        and for choosing me every single day. i know i’m not perfect,
+        and there are times when i make mistakes or don’t express myself
+        the way i should, but please know that my love for you has never
+        been fake. every “ i love you” i say comes from the deepest part
+        of my heart.
+      </p>
+
+      <p>
+        i want you to know that you’re important to me. your happiness
+        matters, your feelings matter, and i’ll always try my best to be
+        someone who makes you feel safe, loved, and appreciated. i want
+        to be the person you can come home to after a long day, the one
+        who celebrates your happiest moments and stays by your side
+        through the hardest ones.
+      </p>
+
+      <p>
+        if loving you means choosing you over and over again, then i’ll
+        keep choosing you. not because i have to, but because i want to.
+        because no matter how many people there are in this world,
+        my heart still, finds its way back to you.
+      </p>
+
+      <p>
+        i don’t know what tomorrow holds, but one thing i’m sure of is
+        that i’ll never stop loving you with everything i have. thank
+        you for being my comfort, my happiness, and my favorite person.
+        i love you so much, my love. more than you’ll ever know,
+        more than words could ever explain, and more than my heart
+        could ever fully show. always.
+      </p>
+
+      <div class="letter-sign">Always yours ♡</div>
+    </div>
   </div>
 </section>
 
-<section id="calendar">
-  <h2>Our Days</h2>
-  <p class="subtitle">The dates that make our story special.</p>
-  <div class="cards">
-    <div class="card"><h3>♡ Special Day</h3><p>Our important date goes here.</p></div>
-    <div class="card"><h3>♡ Next Chapter</h3><p>More beautiful days ahead.</p></div>
+<!-- OUR DAYS -->
+
+<section id="days" class="soft-section">
+  <div class="section-inner">
+    <div class="section-tag">Little dates, big feelings</div>
+    <h2 class="section-title">Our Days</h2>
+    <p class="section-desc">
+      A few reminders of the moments that matter.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">♡</div>
+        <h3>Our Special Day</h3>
+        <p>A date worth remembering forever.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">✧</div>
+        <h3>Our Next Adventure</h3>
+        <p>Something beautiful is always ahead.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">∞</div>
+        <h3>Everyday</h3>
+        <p>Every ordinary day can become a favorite memory.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="surprises">
-  <h2>A Little Surprise</h2>
-  <p class="subtitle">Something special is waiting for you.</p>
-  <button onclick="showSurprise()">Open your surprise ♡</button>
-  <div id="surprise"></div>
+<!-- SURPRISES -->
+
+<section id="surprises" class="surprise-area">
+  <div class="section-inner">
+    <div class="section-tag">One more little thing</div>
+    <h2 class="section-title">A Little Surprise</h2>
+    <p class="section-desc">
+      Press the button. I have something to tell you.
+    </p>
+
+    <button class="primary-btn" onclick="showSurprise()">
+      Open your surprise ♡
+    </button>
+
+    <div class="surprise-message" id="surpriseMessage"></div>
+  </div>
 </section>
+</main>
 
 <footer>
-  Made with love, just for Mai ♡
+  <div class="footer-heart">♡</div>
+  <p>Made with love, just for Mai.</p>
+  <p style="margin-top:10px">You are a beautiful part of my story.</p>
 </footer>
 
 <script>
+function openLetter() {
+  const envelope = document.getElementById('envelope');
+  const welcome = document.getElementById('welcome');
+
+  envelope.classList.add('open');
+
+  setTimeout(() => {
+    welcome.classList.add('hidden');
+  }, 1300);
+}
+
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('show');
+}
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('show');
+  });
+});
+
+const surprises = [
+  "You make ordinary days feel special. ♡",
+  "If I could choose again, I'd still choose you.",
+  "You are one of my favorite parts of life. ♡",
+  "This little website is just one way to say I love you.",
+  "No matter the day, you deserve to feel appreciated."
+];
+
+let surpriseIndex = 0;
+
 function showSurprise() {
-  document.getElementById("surprise").textContent =
-    "You make ordinary days feel special. ♡";
+  const message = document.getElementById('surpriseMessage');
+
+  message.style.opacity = 0;
+
+  setTimeout(() => {
+    message.textContent = surprises[surpriseIndex];
+    message.style.opacity = 1;
+
+    surpriseIndex = (surpriseIndex + 1) % surprises.length;
+  }, 250);
 }
 </script>
 
