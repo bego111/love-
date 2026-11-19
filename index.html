@@ -3,791 +3,637 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Mai ♡</title>
+<title>For Mai ❤️</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
-
 :root {
-    --pink: #e9aebc;
-    --dark-pink: #bd7188;
-    --cream: #fff9f5;
-    --text: #59434a;
-    --light: #fcecf0;
+  --pink: #d982a2;
+  --deep: #a94e72;
+  --light: #fff1f5;
+  --cream: #fffaf5;
+  --text: #654653;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--text);
+  font-family: Georgia, serif;
+  background: var(--cream);
+  color: var(--text);
 }
 
-h1, h2, h3 {
-    font-family: 'Playfair Display', serif;
+button {
+  cursor: pointer;
+  font-family: inherit;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-/* ENVELOPE INTRO */
-#welcome-screen {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background: #fff1f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    transition: opacity 1s ease, visibility 1s ease;
-}
-
-#welcome-screen.hidden {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.welcome-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 25px;
-    margin-bottom: 35px;
-    color: #a85f76;
-    text-align: center;
+#intro {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  text-align: center;
+  background: linear-gradient(135deg, #fff0f4, #fffaf5);
 }
 
 .envelope {
-    position: relative;
-    width: 260px;
-    height: 170px;
-    background: #e9aebc;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 15px 35px #d99aaa66;
+  width: 230px;
+  height: 150px;
+  background: #e9a7bd;
+  position: relative;
+  border-radius: 5px;
+  margin: 35px 0;
+  box-shadow: 0 12px 30px #d982a244;
+  cursor: pointer;
+  transition: .4s;
 }
 
-.envelope::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-left: 130px solid transparent;
-    border-right: 130px solid transparent;
-    border-top: 95px solid #d78fa3;
-    transform-origin: top;
-    transition: transform .7s ease;
-    z-index: 3;
+.envelope:hover {
+  transform: translateY(-7px);
 }
 
-.envelope::after {
-    content: "♡";
-    position: absolute;
-    top: 65px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 35px;
-    color: white;
-    z-index: 4;
+.envelope:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 115px solid transparent;
+  border-right: 115px solid transparent;
+  border-top: 85px solid #d982a2;
+  z-index: 2;
 }
 
-.envelope.open::before {
-    transform: rotateX(180deg);
-    z-index: 0;
+.envelope:after {
+  content: "♥";
+  position: absolute;
+  top: 58px;
+  left: 95px;
+  font-size: 40px;
+  color: white;
+  z-index: 3;
 }
 
-.envelope-hint {
-    margin-top: 25px;
-    color: #a85f76;
-    font-size: 14px;
+#intro h1 {
+  font-size: 36px;
+  color: var(--deep);
+  margin-bottom: 12px;
 }
 
-/* NAVBAR */
+#intro p {
+  color: #9c6b7c;
+}
+
+.open-btn {
+  border: none;
+  background: var(--deep);
+  color: white;
+  padding: 13px 30px;
+  border-radius: 30px;
+  font-size: 16px;
+  margin-top: 15px;
+}
+
+#website {
+  display: none;
+}
+
 nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: #fff9f5ee;
-    backdrop-filter: blur(12px);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 8%;
-    border-bottom: 1px solid #f4dce3;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fffaf5ee;
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 15px 8px;
+  box-shadow: 0 2px 15px #00000008;
 }
 
-.logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
-    color: var(--dark-pink);
+nav a {
+  text-decoration: none;
+  color: var(--deep);
+  font-size: 13px;
+  padding: 8px 12px;
+  border-radius: 20px;
 }
 
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 22px;
+nav a:hover {
+  background: var(--light);
 }
 
-nav ul a {
-    font-size: 13px;
-    transition: .3s;
-}
-
-nav ul a:hover {
-    color: var(--dark-pink);
-}
-
-/* GENERAL */
 section {
-    padding: 90px 9%;
-    text-align: center;
+  padding: 85px 20px;
+  text-align: center;
+  scroll-margin-top: 65px;
+}
+
+.hero {
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fff0f4, #fffaf5);
+}
+
+.hero h1 {
+  font-size: clamp(40px, 8vw, 65px);
+  color: var(--deep);
+  margin-bottom: 18px;
+}
+
+.hero p {
+  max-width: 500px;
+  line-height: 1.9;
+  font-size: 17px;
 }
 
 .section-title {
-    font-size: 38px;
-    color: var(--dark-pink);
-    margin-bottom: 15px;
+  font-size: 34px;
+  color: var(--deep);
+  margin-bottom: 15px;
 }
 
-.section-subtitle {
-    font-size: 14px;
-    color: #987b83;
-    margin-bottom: 40px;
+.subtitle {
+  color: #a57b89;
+  margin-bottom: 35px;
+  line-height: 1.7;
 }
 
-/* HOME */
-#home {
-    min-height: 85vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #fff5f5, #fbe5eb);
+.counter-section {
+  background: #fff0f4;
 }
 
-.hero-small {
-    letter-spacing: 4px;
-    font-size: 12px;
-    color: #b7798b;
-    margin-bottom: 20px;
+.counter-card {
+  max-width: 420px;
+  margin: auto;
+  padding: 35px 20px;
+  background: white;
+  border-radius: 25px;
+  box-shadow: 0 10px 35px #d982a222;
 }
 
-#home h1 {
-    font-size: clamp(45px, 8vw, 85px);
-    color: #a85f76;
-    margin-bottom: 15px;
+.counter-number {
+  font-size: clamp(65px, 15vw, 95px);
+  font-weight: bold;
+  color: var(--pink);
+  line-height: 1.2;
 }
 
-#home p {
-    max-width: 500px;
-    line-height: 1.8;
-    color: #876b73;
+.counter-label {
+  font-size: 20px;
+  color: var(--deep);
+  margin-top: 5px;
 }
 
-.hero-heart {
-    font-size: 35px;
-    margin-top: 25px;
-    color: var(--dark-pink);
+.counter-date {
+  color: #a57b89;
+  font-size: 14px;
+  margin-top: 15px;
 }
 
-/* STORY */
-.story-box {
-    max-width: 700px;
-    margin: auto;
-    background: white;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 35px #dba8b51c;
-    line-height: 2;
+.counter-heart {
+  font-size: 28px;
+  margin-top: 18px;
 }
 
-/* COUNTER */
-.counter {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-top: 35px;
+.cards {
+  max-width: 950px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
 }
 
-.counter-item {
-    background: #fff0f3;
-    padding: 22px 30px;
-    border-radius: 15px;
-    min-width: 120px;
+.card {
+  background: white;
+  border: 1px solid #f4dce5;
+  padding: 28px 20px;
+  border-radius: 20px;
+  box-shadow: 0 7px 22px #00000008;
+  transition: .3s;
 }
 
-.counter-item strong {
-    display: block;
-    font-size: 30px;
-    color: var(--dark-pink);
-    font-family: 'Playfair Display', serif;
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px #d982a222;
 }
 
-.counter-item span {
-    font-size: 12px;
-    color: #987b83;
+.card .emoji {
+  font-size: 35px;
+  margin-bottom: 15px;
 }
 
-/* MEMORIES */
-#memories {
-    background: #fff2f4;
+.card h3 {
+  color: var(--deep);
+  margin-bottom: 10px;
 }
 
-.memory-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 22px;
+.card p {
+  line-height: 1.7;
+  font-size: 14px;
+  color: #8b6976;
 }
 
-.memory-card {
-    background: white;
-    padding: 35px 20px;
-    border-radius: 18px;
-    transition: .3s;
-    box-shadow: 0 8px 25px #dba8b51a;
-}
-
-.memory-card:hover {
-    transform: translateY(-7px);
-}
-
-.memory-icon {
-    font-size: 35px;
-    margin-bottom: 15px;
-}
-
-.memory-card h3 {
-    color: var(--dark-pink);
-    margin-bottom: 10px;
-}
-
-.memory-card p {
-    font-size: 13px;
-    line-height: 1.7;
-    color: #987b83;
-}
-
-/* SONGS */
-.song-list {
-    max-width: 750px;
-    margin: auto;
-    display: grid;
-    gap: 25px;
-}
-
-.song-card {
-    background: white;
-    padding: 20px;
-    border-radius: 18px;
-    box-shadow: 0 8px 25px #dba8b51a;
-    text-align: left;
-}
-
-.song-card h3 {
-    color: var(--dark-pink);
-    margin-bottom: 15px;
-    font-size: 21px;
-}
-
-.song-card iframe {
-    width: 100%;
-    height: 200px;
-    border: none;
-    border-radius: 12px;
-}
-
-/* LETTER */
-#letters {
-    background: #fff2f4;
+.letter-section {
+  background: #fff5f7;
 }
 
 .letter {
-    max-width: 750px;
-    margin: auto;
-    background: white;
-    padding: 45px;
-    border-radius: 20px;
-    text-align: left;
-    line-height: 2;
-    box-shadow: 0 10px 35px #dba8b51c;
+  max-width: 720px;
+  margin: auto;
+  background: white;
+  padding: 35px;
+  border-radius: 22px;
+  line-height: 2;
+  text-align: left;
+  box-shadow: 0 8px 25px #00000008;
+  font-size: 15px;
 }
 
 .letter h3 {
-    color: var(--dark-pink);
-    text-align: center;
-    margin-bottom: 25px;
-    font-size: 28px;
+  color: var(--deep);
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 25px;
 }
 
-.letter p {
-    margin-bottom: 18px;
-    font-size: 14px;
-}
-
-/* DAYS */
-.days-box {
-    background: white;
-    max-width: 600px;
-    margin: auto;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 35px #dba8b51c;
-}
-
-.days-box .big-heart {
-    font-size: 45px;
-    color: var(--dark-pink);
-    margin-bottom: 15px;
-}
-
-/* SURPRISE */
-#surprises {
-    background: #fff2f4;
+.day-card {
+  max-width: 600px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 20px;
+  background: white;
+  line-height: 2;
 }
 
 .surprise-btn {
-    border: none;
-    background: var(--dark-pink);
-    color: white;
-    padding: 15px 35px;
-    border-radius: 30px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: .3s;
+  background: var(--deep);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 14px 28px;
+  font-size: 16px;
+  margin-top: 20px;
 }
 
-.surprise-btn:hover {
-    background: #a85f76;
-    transform: scale(1.04);
+#surpriseMessage {
+  margin: 25px auto 0;
+  max-width: 450px;
+  line-height: 1.9;
+  color: var(--deep);
+  font-size: 18px;
 }
 
-#surprise-message {
-    margin-top: 30px;
-    font-family: 'Playfair Display', serif;
-    font-size: 25px;
-    color: var(--dark-pink);
-    line-height: 1.7;
-    display: none;
-}
-
-/* VIDEOS */
 .video-placeholder {
-    max-width: 650px;
-    margin: auto;
-    padding: 45px;
-    background: white;
-    border-radius: 20px;
-    color: #987b83;
-    line-height: 1.8;
+  max-width: 500px;
+  margin: auto;
+  padding: 45px 20px;
+  background: white;
+  border-radius: 20px;
+  border: 1px dashed #d982a2;
+  line-height: 1.9;
 }
 
-/* FOOTER */
 footer {
-    padding: 35px 15px;
-    text-align: center;
-    background: #f9e5ea;
-    color: #a36d7e;
-    font-size: 13px;
+  padding: 35px 15px;
+  text-align: center;
+  background: #fff0f4;
+  color: var(--deep);
+  line-height: 2;
 }
 
-footer span {
-    color: #c56e88;
+/* SONG PLAYER */
+.song-player {
+  max-width: 650px;
+  margin: auto;
+  display: grid;
+  gap: 20px;
 }
 
-/* MOBILE */
-@media(max-width: 750px) {
-    nav {
-        flex-direction: column;
-        gap: 15px;
-        padding: 15px 5%;
-    }
+.song-player .card {
+  text-align: left;
+}
 
-    nav ul {
-        gap: 12px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+.song-player iframe {
+  width: 100%;
+  height: 200px;
+  border: none;
+  border-radius: 12px;
+  margin-top: 15px;
+  display: block;
+}
 
-    nav ul a {
-        font-size: 11px;
-    }
+@media(max-width: 600px) {
+  nav {
+    gap: 2px;
+  }
 
-    section {
-        padding: 65px 6%;
-    }
+  nav a {
+    font-size: 11px;
+    padding: 8px;
+  }
 
-    .section-title {
-        font-size: 31px;
-    }
+  section {
+    padding: 65px 16px;
+  }
 
-    .letter {
-        padding: 25px;
-    }
+  .letter {
+    padding: 23px;
+    font-size: 14px;
+  }
 
-    .song-card iframe {
-        height: 190px;
-    }
+  .song-player iframe {
+    height: 190px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- ENVELOPE INTRO -->
-<div id="welcome-screen">
-    <div class="welcome-text">A little something for you ♡</div>
+<!-- Envelope intro -->
+<div id="intro">
+  <h1>For Mai ❤️</h1>
+  <p>A little place made with love, just for you.</p>
 
-    <div class="envelope" id="envelope" onclick="openLetter()"></div>
+  <div class="envelope" onclick="openWebsite()"></div>
 
-    <div class="envelope-hint">Tap the envelope to open</div>
+  <button class="open-btn" onclick="openWebsite()">
+    Open Your Letter ♥
+  </button>
 </div>
 
-<!-- NAVIGATION -->
-<nav>
-    <div class="logo">For Mai ♡</div>
+<!-- Main website -->
+<div id="website">
 
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#story">Our Story</a></li>
-        <li><a href="#memories">Memories</a></li>
-        <li><a href="#songs">Songs</a></li>
-        <li><a href="#letters">Letters</a></li>
-        <li><a href="#days">Our Days</a></li>
-        <li><a href="#surprises">Surprises</a></li>
-    </ul>
+<nav>
+  <a href="#home">Home</a>
+  <a href="#counter">Our Story</a>
+  <a href="#memories">Memories</a>
+  <a href="#songs">Songs</a>
+  <a href="#letters">Letters</a>
+  <a href="#days">Our Days</a>
+  <a href="#surprises">Surprises</a>
+  <a href="#videos">Videos</a>
 </nav>
 
-<!-- HOME -->
-<section id="home">
-    <div class="hero-small">A WEBSITE MADE WITH LOVE</div>
+<!-- Home -->
+<section class="hero" id="home">
+  <h1>Hi, Mai ❤️</h1>
+  <p>
+    Welcome to our little world.
+    A place for our memories, our moments,
+    our words, and everything that makes
+    our story special.
+  </p>
+</section>
 
-    <h1>For Mai ♡</h1>
+<!-- Counter -->
+<section class="counter-section" id="counter">
+  <h2 class="section-title">Our Story ❤️</h2>
+  <p class="subtitle">Every day is another beautiful page.</p>
+
+  <div class="counter-card">
+    <div class="counter-number" id="daysCounter">0</div>
+    <div class="counter-label">Days Together</div>
+    <div class="counter-date">Since May 18, 2026</div>
+    <div class="counter-heart">♥</div>
+    <p class="subtitle" style="margin:15px 0 0">
+      And counting...
+    </p>
+  </div>
+</section>
+
+<!-- Memories -->
+<section id="memories">
+  <h2 class="section-title">Our Memories</h2>
+  <p class="subtitle">Little moments that mean everything.</p>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="emoji">💗</div>
+      <h3>The Beginning</h3>
+      <p>The day our story started and everything became a little more special.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🌷</div>
+      <h3>Our Conversations</h3>
+      <p>All those little talks that can make an ordinary day unforgettable.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">✨</div>
+      <h3>Favorite Moments</h3>
+      <p>Every moment with you deserves a special place in our story.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🧸</div>
+      <h3>More to Come</h3>
+      <p>There are still so many memories waiting for us.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Songs -->
+<section id="songs" style="background:#fff5f7">
+  <h2 class="section-title">Our Songs 🎵</h2>
+  <p class="subtitle">Songs that remind us of special moments.</p>
+
+  <div class="song-player">
+
+    <div class="card">
+      <div class="emoji">🎧</div>
+      <h3>01 — لما النسيم</h3>
+      <p>A song for a special moment. ❤️</p>
+      <iframe
+        src="https://www.youtube.com/embed/0wPhbmeNSOs"
+        title="لما النسيم"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🎶</div>
+      <h3>02 — حبيبتي ملاك</h3>
+      <p>A song that always reminds me of you. 💗</p>
+      <iframe
+        src="https://www.youtube.com/embed/CIuagRrEcPw"
+        title="حبيبتي ملاك"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="card">
+      <div class="emoji">💞</div>
+      <h3>03 — Adele · Love Song</h3>
+      <p>One more song for our little world. ❤️</p>
+      <iframe
+        src="https://www.youtube.com/embed/qgko7i3piKM"
+        title="Adele Love Song"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+  </div>
+</section>
+
+<!-- Letters -->
+<section class="letter-section" id="letters">
+  <h2 class="section-title">Love Letters 💌</h2>
+  <p class="subtitle">Some feelings deserve more than a simple message.</p>
+
+  <div class="letter">
+    <h3>To My Favorite Person ❤️</h3>
 
     <p>
-        Some people make ordinary days feel special.
-        And somehow, you became one of the most beautiful
-        parts of my world.
+      i love you so much, my love. more than you’ll ever know.
+      sometimes i don’t even know how to put everything i feel into words
+      because no matter what i say, it never feels enough. you mean so much
+      to me, and loving you has become one of the most natural things i’ve
+      ever done. you’re always on my mind, whether we’re talking, laughing,
+      or even sitting in silence.
     </p>
 
-    <div class="hero-heart">♡</div>
-</section>
-
-<!-- OUR STORY -->
-<section id="story">
-    <h2 class="section-title">Our Story</h2>
-
-    <p class="section-subtitle">
-        Every little moment means something.
+    <p>
+      thank you for staying, for loving me, and for choosing me every single
+      day. i know i’m not perfect, and there are times when i make mistakes
+      or don’t express myself the way i should, but please know that my love
+      for you has never been fake. every “ i love you” i say comes from the
+      deepest part of my heart.
     </p>
 
-    <div class="story-box">
-        <p>
-            Every story has its own beginning, and ours has
-            become something I truly cherish.
-            It's made of little moments, conversations,
-            laughter, memories, and things that might seem
-            ordinary to everyone else but mean so much to us.
-        </p>
-
-        <div class="counter">
-            <div class="counter-item">
-                <strong id="days-count">0</strong>
-                <span>Days together ♡</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- MEMORIES -->
-<section id="memories">
-    <h2 class="section-title">Our Memories</h2>
-
-    <p class="section-subtitle">
-        Little moments that deserve to stay forever.
+    <p>
+      i want you to know that you’re important to me. your happiness matters,
+      your feelings matter, and i’ll always try my best to be someone who
+      makes you feel safe, loved, and appreciated. i want to be the person
+      you can come home to after a long day, the one who celebrates your
+      happiest moments and stays by your side through the hardest ones.
     </p>
 
-    <div class="memory-grid">
-
-        <div class="memory-card">
-            <div class="memory-icon">♡</div>
-            <h3>Our Beginning</h3>
-            <p>
-                The beginning of something beautiful.
-            </p>
-        </div>
-
-        <div class="memory-card">
-            <div class="memory-icon">✿</div>
-            <h3>Little Moments</h3>
-            <p>
-                The small things that make everything special.
-            </p>
-        </div>
-
-        <div class="memory-card">
-            <div class="memory-icon">☁</div>
-            <h3>Our Conversations</h3>
-            <p>
-                Talks that make ordinary days better.
-            </p>
-        </div>
-
-        <div class="memory-card">
-            <div class="memory-icon">♡</div>
-            <h3>More To Come</h3>
-            <p>
-                So many memories are still waiting for us.
-            </p>
-        </div>
-
-    </div>
-</section>
-
-<!-- SONGS -->
-<section id="songs">
-    <h2 class="section-title">Our Songs</h2>
-
-    <p class="section-subtitle">
-        Three songs, each with its own little meaning.
+    <p>
+      if loving you means choosing you over and over again, then i’ll keep
+      choosing you. not because i have to, but because i want to. because
+      no matter how many people there are in this world, my heart still,
+      finds its way back to you.
     </p>
 
-    <div class="song-list">
-
-        <div class="song-card">
-            <h3>01 — Adele · Love Song ♡</h3>
-
-            <iframe
-                src="https://www.youtube.com/embed/qgko7i3piKM"
-                title="Adele Love Song"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
-        </div>
-
-        <div class="song-card">
-            <h3>02 — حبيبتي ملاك ♡</h3>
-
-            <iframe
-                src="https://www.youtube.com/embed/CIuagRrEcPw"
-                title="حبيبتي ملاك"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
-        </div>
-
-        <div class="song-card">
-            <h3>03 — لما النسيم ♡</h3>
-
-            <iframe
-                src="https://www.youtube.com/embed/0wPhbmeNSOs"
-                title="لما النسيم"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
-        </div>
-
-    </div>
-</section>
-
-<!-- LOVE LETTER -->
-<section id="letters">
-    <h2 class="section-title">A Letter For You</h2>
-
-    <p class="section-subtitle">
-        Something I want you to know.
+    <p>
+      i don’t know what tomorrow holds, but one thing i’m sure of is that
+      i’ll never stop loving you with everything i have. thank you for being
+      my comfort, my happiness, and my favorite person.
     </p>
 
-    <div class="letter">
-
-        <h3>My Love ♡</h3>
-
-        <p>
-            i love you so much, my love. more than you’ll ever know.
-            sometimes i don’t even know how to put everything i feel
-            into words because no matter what i say, it never feels enough.
-            you mean so much to me, and loving you has become one of the
-            most natural things i’ve ever done.
-        </p>
-
-        <p>
-            you’re always on my mind, whether we’re talking, laughing,
-            or even sitting in silence. thank you for staying, for loving me,
-            and for choosing me every single day.
-        </p>
-
-        <p>
-            i know i’m not perfect, and there are times when i make mistakes
-            or don’t express myself the way i should, but please know that
-            my love for you has never been fake. every “i love you” i say
-            comes from the deepest part of my heart.
-        </p>
-
-        <p>
-            i want you to know that you’re important to me. your happiness
-            matters, your feelings matter, and i’ll always try my best to
-            be someone who makes you feel safe, loved, and appreciated.
-        </p>
-
-        <p>
-            i want to be the person you can come home to after a long day,
-            the one who celebrates your happiest moments and stays by your
-            side through the hardest ones.
-        </p>
-
-        <p>
-            if loving you means choosing you over and over again,
-            then i’ll keep choosing you. not because i have to,
-            but because i want to. because no matter how many people
-            there are in this world, my heart still, finds its way back to you.
-        </p>
-
-        <p>
-            i don’t know what tomorrow holds, but one thing i’m sure of
-            is that i’ll never stop loving you with everything i have.
-            thank you for being my comfort, my happiness, and my favorite person.
-        </p>
-
-        <p>
-            i love you so much, my love. more than you’ll ever know,
-            more than words could ever explain, and more than my heart
-            could ever fully show.
-        </p>
-
-        <p style="text-align:right; color:#bd7188;">
-            always ♡
-        </p>
-
-    </div>
+    <p>
+      i love you so much, my love. more than you’ll ever know, more than
+      words could ever explain, and more than my heart could ever fully show.
+      always.
+    </p>
+  </div>
 </section>
 
-<!-- OUR DAYS -->
+<!-- Our Days -->
 <section id="days">
-    <h2 class="section-title">Our Days</h2>
+  <h2 class="section-title">Our Days 📅</h2>
+  <p class="subtitle">A date worth remembering forever.</p>
 
-    <p class="section-subtitle">
-        And every day is another page in our story.
-    </p>
-
-    <div class="days-box">
-        <div class="big-heart">♡</div>
-
-        <h3 style="font-size:25px; color:#bd7188;">
-            May 18, 2026
-        </h3>
-
-        <p style="margin-top:15px; line-height:1.8;">
-            A date that will always have a special place
-            in this little world of ours.
-        </p>
-
-        <div class="counter">
-            <div class="counter-item">
-                <strong id="days-count-2">0</strong>
-                <span>Days ♡</span>
-            </div>
-        </div>
-    </div>
+  <div class="day-card">
+    <h3 style="color:#a94e72;font-size:25px">May 18, 2026</h3>
+    <p>The day our story began ❤️</p>
+    <p>One date. A thousand feelings. Countless memories.</p>
+  </div>
 </section>
 
-<!-- SURPRISES -->
-<section id="surprises">
-    <h2 class="section-title">A Little Surprise</h2>
+<!-- Surprises -->
+<section id="surprises" style="background:#fff5f7">
+  <h2 class="section-title">Little Surprises 🎁</h2>
+  <p class="subtitle">A little something whenever you need a smile.</p>
 
-    <p class="section-subtitle">
-        There's something waiting for you.
-    </p>
+  <button class="surprise-btn" onclick="showSurprise()">
+    Open Your Surprise ♥
+  </button>
 
-    <button class="surprise-btn" onclick="showSurprise()">
-        Open your surprise ♡
-    </button>
-
-    <div id="surprise-message">
-        You're one of the sweetest parts of my life.
-        <br>
-        And I'm really glad you're here. ♡
-    </div>
+  <div id="surpriseMessage"></div>
 </section>
 
-<!-- VIDEOS -->
+<!-- Videos -->
 <section id="videos">
-    <h2 class="section-title">Our Videos</h2>
+  <h2 class="section-title">Our Videos 🎬</h2>
+  <p class="subtitle">A place for moments we want to watch again.</p>
 
-    <p class="section-subtitle">
-        Little moments saved forever.
-    </p>
-
-    <div class="video-placeholder">
-        <div style="font-size:40px; margin-bottom:15px;">♡</div>
-
-        <p>
-            This space is waiting for our favorite videos
-            and moments together.
-        </p>
-    </div>
+  <div class="video-placeholder">
+    <div style="font-size:40px">🎥</div>
+    <h3 style="color:#a94e72">Our Little Memories</h3>
+    <p>Our favorite videos will have a home here.</p>
+  </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-    Made with love <span>♡</span> For Mai
-
-    <p style="margin-top:10px;">
-        A little corner of the internet, just for us.
-    </p>
+  Made with love, just for Mai ❤️
+  <br>
+  Our story is still being written...
 </footer>
+
+</div>
 
 <script>
 
-/* OPEN ENVELOPE */
-function openLetter() {
-    const envelope = document.getElementById("envelope");
-
-    envelope.classList.add("open");
-
-    setTimeout(function() {
-        document.getElementById("welcome-screen").classList.add("hidden");
-    }, 800);
+// Open the website
+function openWebsite() {
+  document.getElementById("intro").style.display = "none";
+  document.getElementById("website").style.display = "block";
+  window.scrollTo(0, 0);
 }
 
-/* DAYS COUNTER */
-function updateDays() {
+// Days counter
+function updateCounter() {
+  const startDate = new Date(2026, 4, 18);
+  const today = new Date();
 
-    const startDate = new Date(2026, 4, 18);
-    const today = new Date();
+  startDate.setHours(0, 0, 0, 0);
+  today.setHours(0, 0, 0, 0);
 
-    startDate.setHours(0, 0, 0, 0);
-    today.setHours(0, 0, 0, 0);
+  const difference = today - startDate;
+  const days = Math.max(0, Math.floor(difference / (1000 * 60 * 60 * 24)));
 
-    const difference = today - startDate;
-
-    const days = Math.max(
-        0,
-        Math.floor(difference / (1000 * 60 * 60 * 24))
-    );
-
-    document.getElementById("days-count").textContent = days;
-    document.getElementById("days-count-2").textContent = days;
+  document.getElementById("daysCounter").textContent = days;
 }
 
-updateDays();
+updateCounter();
 
-/* SURPRISE BUTTON */
+// Surprise messages
+const surprises = [
+  "You make ordinary days feel special. ❤️",
+  "If I could choose again, I'd still choose you. 💗",
+  "You are one of my favorite parts of every day. 🌷",
+  "I hope you always find a reason to smile. ✨",
+  "Here's a little reminder: you are appreciated. 🧸",
+  "Our story has so many beautiful pages left. 💌"
+];
+
 function showSurprise() {
-
-    const message = document.getElementById("surprise-message");
-
-    if (message.style.display === "block") {
-        message.style.display = "none";
-    } else {
-        message.style.display = "block";
-    }
+  const randomIndex = Math.floor(Math.random() * surprises.length);
+  document.getElementById("surpriseMessage").textContent =
+    surprises[randomIndex];
 }
 
 </script>
