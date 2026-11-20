@@ -247,7 +247,6 @@ section {
   color: #8b6976;
 }
 
-/* CLICKABLE MEMORY FOLDERS */
 .memory-card {
   cursor: pointer;
   position: relative;
@@ -320,7 +319,7 @@ section {
   margin-top: 18px;
 }
 
-/* FIRST FOLDER PHOTO AND VIDEO GALLERY */
+/* Photo galleries */
 .memory-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -357,7 +356,7 @@ section {
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: #24151deF;
+  background: #24151def;
   align-items: center;
   justify-content: center;
   padding: 25px;
@@ -422,6 +421,10 @@ section {
   font-size: 25px;
 }
 
+.letter p {
+  margin-bottom: 18px;
+}
+
 .day-card {
   max-width: 600px;
   margin: auto;
@@ -476,7 +479,6 @@ footer {
   line-height: 2;
 }
 
-/* SONG PLAYER */
 .song-player {
   max-width: 650px;
   margin: auto;
@@ -533,7 +535,6 @@ footer {
 
 <body>
 
-<!-- Envelope intro -->
 <div id="intro">
   <h1>For Mai ❤️</h1>
   <p>A little place made with love, just for you.</p>
@@ -545,7 +546,6 @@ footer {
   </button>
 </div>
 
-<!-- Main website -->
 <div id="website">
 
 <nav>
@@ -559,7 +559,6 @@ footer {
   <a href="#videos" onclick="backToMain()">Videos</a>
 </nav>
 
-<!-- Home -->
 <section class="hero" id="home">
   <h1>Hi, Mai ❤️</h1>
   <p>
@@ -570,7 +569,6 @@ footer {
   </p>
 </section>
 
-<!-- Counter -->
 <section class="counter-section" id="counter">
   <h2 class="section-title">Our Story ❤️</h2>
   <p class="subtitle">Every day is another beautiful page.</p>
@@ -586,7 +584,6 @@ footer {
   </div>
 </section>
 
-<!-- Memories -->
 <section id="memories">
   <h2 class="section-title">Our Memories</h2>
   <p class="subtitle">Little moments that mean everything.</p>
@@ -620,10 +617,10 @@ footer {
   </div>
 </section>
 
-<!-- Memory Folder Pages -->
+<!-- MEMORY FOLDERS -->
 <div id="memoryPage">
 
-  <!-- Folder 1 -->
+  <!-- FOLDER 1: THE BEGINNING -->
   <div class="memory-folder" id="folder-beginning">
     <div class="folder-icon">💗</div>
     <h2 class="folder-title">The Beginning</h2>
@@ -633,9 +630,7 @@ footer {
 
     <div class="folder-content">
       <h3>Where It All Started 🌷</h3>
-      <p>
-        May 18, 2026
-      </p>
+      <p>May 18, 2026</p>
       <p>
         The first page of a story that became so special.
         A simple beginning, but one worth remembering.
@@ -658,9 +653,9 @@ footer {
       <p>A few little moments I want to keep close. ❤️</p>
 
       <div class="memory-gallery">
-        <img src="beginning-photo-1.jpg" alt="A memory from the beginning" onclick="openImage(this.src)">
-        <img src="beginning-photo-2.jpg" alt="A memory from the beginning" onclick="openImage(this.src)">
-        <img src="beginning-photo-3.jpg" alt="A memory from the beginning" onclick="openImage(this.src)">
+        <img src="beginning-photo-1.jpg" alt="Beginning memory 1" onclick="openImage(this.src)">
+        <img src="beginning-photo-2.jpg" alt="Beginning memory 2" onclick="openImage(this.src)">
+        <img src="beginning-photo-3.jpg" alt="Beginning memory 3" onclick="openImage(this.src)">
       </div>
 
       <h3>One More Memory 🎬</h3>
@@ -675,7 +670,7 @@ footer {
     </button>
   </div>
 
-  <!-- Folder 2 -->
+  <!-- FOLDER 2: OUR CONVERSATIONS -->
   <div class="memory-folder" id="folder-conversations">
     <div class="folder-icon">🌷</div>
     <h2 class="folder-title">Our Conversations</h2>
@@ -705,12 +700,28 @@ footer {
       </p>
     </div>
 
+    <div class="folder-content">
+      <h3>Our Saved Conversations 📸</h3>
+      <p>
+        A few words and little moments that deserve to be kept. ❤️
+      </p>
+
+      <div class="memory-gallery">
+        <img src="conversations-photo-1.jpg" alt="Conversation memory 1" onclick="openImage(this.src)">
+        <img src="conversations-photo-2.jpg" alt="Conversation memory 2" onclick="openImage(this.src)">
+        <img src="conversations-photo-3.jpg" alt="Conversation memory 3" onclick="openImage(this.src)">
+        <img src="conversations-photo-4.jpg" alt="Conversation memory 4" onclick="openImage(this.src)">
+        <img src="conversations-photo-5.jpg" alt="Conversation memory 5" onclick="openImage(this.src)">
+        <img src="conversations-photo-6.jpg" alt="Conversation memory 6" onclick="openImage(this.src)">
+      </div>
+    </div>
+
     <button class="back-btn" onclick="backToMemories()">
       ← Back to Memories
     </button>
   </div>
 
-  <!-- Folder 3 -->
+  <!-- FOLDER 3: FAVORITE MOMENTS -->
   <div class="memory-folder" id="folder-moments">
     <div class="folder-icon">✨</div>
     <h2 class="folder-title">Favorite Moments</h2>
@@ -744,7 +755,7 @@ footer {
     </button>
   </div>
 
-  <!-- Folder 4 -->
+  <!-- FOLDER 4: MORE TO COME -->
   <div class="memory-folder" id="folder-future">
     <div class="folder-icon">🧸</div>
     <h2 class="folder-title">More to Come</h2>
@@ -779,14 +790,15 @@ footer {
     </button>
   </div>
 
-  <div class="image-lightbox" id="imageLightbox" onclick="closeImage()">
-    <button class="lightbox-close" aria-label="Close image" onclick="closeImage()">×</button>
-    <img id="lightboxImage" src="" alt="Expanded memory photo">
-  </div>
-
 </div>
 
-<!-- Songs -->
+<!-- IMAGE VIEWER -->
+<div class="image-lightbox" id="imageLightbox" onclick="closeImage()">
+  <button class="lightbox-close" aria-label="Close image" onclick="closeImage()">×</button>
+  <img id="lightboxImage" src="" alt="Expanded memory photo">
+</div>
+
+<!-- SONGS -->
 <section id="songs" style="background:#fff5f7">
   <h2 class="section-title">Our Songs 🎵</h2>
   <p class="subtitle">Songs that remind us of special moments.</p>
@@ -832,7 +844,7 @@ footer {
   </div>
 </section>
 
-<!-- Letters -->
+<!-- LETTERS -->
 <section class="letter-section" id="letters">
   <h2 class="section-title">Love Letters 💌</h2>
   <p class="subtitle">Some feelings deserve more than a simple message.</p>
@@ -886,7 +898,7 @@ footer {
   </div>
 </section>
 
-<!-- Our Days -->
+<!-- OUR DAYS -->
 <section id="days">
   <h2 class="section-title">Our Days 📅</h2>
   <p class="subtitle">A date worth remembering forever.</p>
@@ -903,7 +915,7 @@ footer {
   </div>
 </section>
 
-<!-- Surprises -->
+<!-- SURPRISES -->
 <section id="surprises" style="background:#fff5f7">
   <h2 class="section-title">Little Surprises 🎁</h2>
   <p class="subtitle">A little something whenever you need a smile.</p>
@@ -915,7 +927,7 @@ footer {
   <div id="surpriseMessage"></div>
 </section>
 
-<!-- Videos -->
+<!-- VIDEOS -->
 <section id="videos">
   <h2 class="section-title">Our Videos 🎬</h2>
   <p class="subtitle">A place for moments we want to watch again.</p>
@@ -924,6 +936,7 @@ footer {
     <div style="font-size:40px">🎥</div>
     <h3 style="color:#a94e72">Our Little Memories</h3>
     <p>A memory worth watching again. ❤️</p>
+
     <video class="memory-video" controls playsinline preload="metadata">
       <source src="memory.mp4" type="video/mp4">
       Your browser does not support the video tag.
@@ -960,7 +973,7 @@ function openWebsite() {
   window.scrollTo(0, 0);
 }
 
-// Open a memory folder as a separate page
+// Open a memory folder
 function openMemoryFolder(folderName) {
   const mainElements = document.querySelectorAll(
     "#website > nav, #website > section, #website > footer"
@@ -981,7 +994,7 @@ function openMemoryFolder(folderName) {
   window.scrollTo(0, 0);
 }
 
-// Back to the memories folders
+// Back to memories
 function backToMemories() {
   document.getElementById("memoryPage").style.display = "none";
 
@@ -1024,7 +1037,9 @@ function updateCounter() {
   today.setHours(0, 0, 0, 0);
 
   const difference = today - startDate;
-  const days = Math.max(0, Math.floor(difference / (1000 * 60 * 60 * 24)));
+  const days = Math.max(0, Math.floor(
+    difference / (1000 * 60 * 60 * 24)
+  ));
 
   document.getElementById("daysCounter").textContent = days;
 }
@@ -1043,6 +1058,7 @@ const surprises = [
 
 function showSurprise() {
   const randomIndex = Math.floor(Math.random() * surprises.length);
+
   document.getElementById("surpriseMessage").textContent =
     surprises[randomIndex];
 }
