@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -319,7 +318,69 @@ section {
   border-radius: 16px;
   padding: 20px;
   margin-top: 18px;
-  color: var(--deep);
+}
+
+/* FIRST FOLDER PHOTO AND VIDEO GALLERY */
+.memory-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin: 25px 0;
+}
+
+.memory-gallery img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 3px solid white;
+  box-shadow: 0 6px 18px #d982a233;
+  cursor: zoom-in;
+  transition: .25s;
+}
+
+.memory-gallery img:hover {
+  transform: translateY(-4px);
+}
+
+.folder-video {
+  width: 100%;
+  max-width: 600px;
+  display: block;
+  margin: 20px auto;
+  border-radius: 16px;
+  background: #000;
+}
+
+.image-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: #24151deF;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+}
+
+.image-lightbox img {
+  max-width: 95%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  border: 0;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  color: white;
+  background: #a94e72;
+  font-size: 25px;
 }
 
 .back-btn {
@@ -592,6 +653,23 @@ footer {
       </p>
     </div>
 
+    <div class="folder-content">
+      <h3>Our First Memories 📸</h3>
+      <p>A few little moments I want to keep close. ❤️</p>
+
+      <div class="memory-gallery">
+        <img src="beginning-photo-1.jpg" alt="A memory from the beginning" onclick="openImage(this.src)">
+        <img src="beginning-photo-2.jpg" alt="A memory from the beginning" onclick="openImage(this.src)">
+        <img src="beginning-photo-3.jpg" alt="A memory from the beginning" onclick="openImage(this.src)">
+      </div>
+
+      <h3>One More Memory 🎬</h3>
+      <video class="folder-video" controls playsinline preload="metadata">
+        <source src="beginning-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
     <button class="back-btn" onclick="backToMemories()">
       ← Back to Memories
     </button>
@@ -699,6 +777,11 @@ footer {
     <button class="back-btn" onclick="backToMemories()">
       ← Back to Memories
     </button>
+  </div>
+
+  <div class="image-lightbox" id="imageLightbox" onclick="closeImage()">
+    <button class="lightbox-close" aria-label="Close image" onclick="closeImage()">×</button>
+    <img id="lightboxImage" src="" alt="Expanded memory photo">
   </div>
 
 </div>
@@ -857,6 +940,18 @@ footer {
 </div>
 
 <script>
+
+// Open a photo in a larger view
+function openImage(imageSrc) {
+  document.getElementById("lightboxImage").src = imageSrc;
+  document.getElementById("imageLightbox").style.display = "flex";
+}
+
+// Close the enlarged photo
+function closeImage() {
+  document.getElementById("imageLightbox").style.display = "none";
+  document.getElementById("lightboxImage").src = "";
+}
 
 // Open the website
 function openWebsite() {
