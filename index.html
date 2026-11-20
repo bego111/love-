@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -247,6 +248,96 @@ section {
   color: #8b6976;
 }
 
+/* CLICKABLE MEMORY FOLDERS */
+.memory-card {
+  cursor: pointer;
+  position: relative;
+}
+
+.memory-card::after {
+  content: "Open folder →";
+  display: block;
+  margin-top: 18px;
+  color: var(--pink);
+  font-size: 13px;
+}
+
+#memoryPage {
+  display: none;
+  min-height: 80vh;
+  padding: 65px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #fff5f7, #fffaf5);
+}
+
+.memory-folder {
+  display: none;
+  max-width: 750px;
+  margin: auto;
+}
+
+.folder-icon {
+  font-size: 65px;
+  margin-bottom: 15px;
+}
+
+.folder-title {
+  color: var(--deep);
+  font-size: 34px;
+  margin-bottom: 15px;
+}
+
+.folder-description {
+  color: #a57b89;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.folder-content {
+  background: white;
+  border: 1px solid #f4dce5;
+  border-radius: 22px;
+  padding: 30px 25px;
+  box-shadow: 0 8px 25px #d982a222;
+  line-height: 2;
+  margin-bottom: 20px;
+}
+
+.folder-content h3 {
+  color: var(--deep);
+  margin-bottom: 12px;
+  font-size: 22px;
+}
+
+.folder-content p {
+  color: #8b6976;
+  margin-bottom: 12px;
+}
+
+.folder-note {
+  background: #fff1f5;
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 18px;
+  color: var(--deep);
+}
+
+.back-btn {
+  background: var(--deep);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 13px 28px;
+  font-size: 15px;
+  margin-top: 20px;
+  transition: .3s;
+}
+
+.back-btn:hover {
+  background: var(--pink);
+  transform: translateY(-3px);
+}
+
 .letter-section {
   background: #fff5f7;
 }
@@ -367,6 +458,14 @@ footer {
   .song-player iframe {
     height: 190px;
   }
+
+  #memoryPage {
+    padding: 50px 16px;
+  }
+
+  .folder-content {
+    padding: 23px 18px;
+  }
 }
 </style>
 </head>
@@ -389,14 +488,14 @@ footer {
 <div id="website">
 
 <nav>
-  <a href="#home">Home</a>
-  <a href="#counter">Our Story</a>
-  <a href="#memories">Memories</a>
-  <a href="#songs">Songs</a>
-  <a href="#letters">Letters</a>
-  <a href="#days">Our Days</a>
-  <a href="#surprises">Surprises</a>
-  <a href="#videos">Videos</a>
+  <a href="#home" onclick="backToMain()">Home</a>
+  <a href="#counter" onclick="backToMain()">Our Story</a>
+  <a href="#memories" onclick="backToMain()">Memories</a>
+  <a href="#songs" onclick="backToMain()">Songs</a>
+  <a href="#letters" onclick="backToMain()">Letters</a>
+  <a href="#days" onclick="backToMain()">Our Days</a>
+  <a href="#surprises" onclick="backToMain()">Surprises</a>
+  <a href="#videos" onclick="backToMain()">Videos</a>
 </nav>
 
 <!-- Home -->
@@ -433,25 +532,25 @@ footer {
 
   <div class="cards">
 
-    <div class="card">
+    <div class="card memory-card" onclick="openMemoryFolder('beginning')">
       <div class="emoji">💗</div>
       <h3>The Beginning</h3>
       <p>The day our story started and everything became a little more special.</p>
     </div>
 
-    <div class="card">
+    <div class="card memory-card" onclick="openMemoryFolder('conversations')">
       <div class="emoji">🌷</div>
       <h3>Our Conversations</h3>
       <p>All those little talks that can make an ordinary day unforgettable.</p>
     </div>
 
-    <div class="card">
+    <div class="card memory-card" onclick="openMemoryFolder('moments')">
       <div class="emoji">✨</div>
       <h3>Favorite Moments</h3>
       <p>Every moment with you deserves a special place in our story.</p>
     </div>
 
-    <div class="card">
+    <div class="card memory-card" onclick="openMemoryFolder('future')">
       <div class="emoji">🧸</div>
       <h3>More to Come</h3>
       <p>There are still so many memories waiting for us.</p>
@@ -459,6 +558,150 @@ footer {
 
   </div>
 </section>
+
+<!-- Memory Folder Pages -->
+<div id="memoryPage">
+
+  <!-- Folder 1 -->
+  <div class="memory-folder" id="folder-beginning">
+    <div class="folder-icon">💗</div>
+    <h2 class="folder-title">The Beginning</h2>
+    <p class="folder-description">
+      Every beautiful story has a beginning. This is ours. ❤️
+    </p>
+
+    <div class="folder-content">
+      <h3>Where It All Started 🌷</h3>
+      <p>
+        May 18, 2026
+      </p>
+      <p>
+        The first page of a story that became so special.
+        A simple beginning, but one worth remembering.
+      </p>
+      <div class="folder-note">
+        "Every great story starts with one little moment." ❤️
+      </div>
+    </div>
+
+    <div class="folder-content">
+      <h3>A Little Reminder 💌</h3>
+      <p>
+        No matter how many pages come next,
+        this beginning will always have its own special place.
+      </p>
+    </div>
+
+    <button class="back-btn" onclick="backToMemories()">
+      ← Back to Memories
+    </button>
+  </div>
+
+  <!-- Folder 2 -->
+  <div class="memory-folder" id="folder-conversations">
+    <div class="folder-icon">🌷</div>
+    <h2 class="folder-title">Our Conversations</h2>
+    <p class="folder-description">
+      Little talks, endless smiles, and words worth keeping.
+    </p>
+
+    <div class="folder-content">
+      <h3>Our Little Talks 💬</h3>
+      <p>
+        Sometimes the smallest conversations become
+        the biggest part of our day.
+      </p>
+      <div class="folder-note">
+        "It's never just a conversation when it's with you." 💗
+      </div>
+    </div>
+
+    <div class="folder-content">
+      <h3>Things Worth Remembering ✨</h3>
+      <p>
+        The random questions, the silly jokes,
+        the long talks, and even the little goodnight messages.
+      </p>
+      <p>
+        Every conversation can become a memory.
+      </p>
+    </div>
+
+    <button class="back-btn" onclick="backToMemories()">
+      ← Back to Memories
+    </button>
+  </div>
+
+  <!-- Folder 3 -->
+  <div class="memory-folder" id="folder-moments">
+    <div class="folder-icon">✨</div>
+    <h2 class="folder-title">Favorite Moments</h2>
+    <p class="folder-description">
+      A little collection of moments that deserve to stay forever.
+    </p>
+
+    <div class="folder-content">
+      <h3>The Little Things 🧸</h3>
+      <p>
+        The unexpected smiles, the funny moments,
+        the beautiful surprises, and all the little things
+        that make ordinary days feel different.
+      </p>
+    </div>
+
+    <div class="folder-content">
+      <h3>Every Moment Matters ❤️</h3>
+      <p>
+        Some memories don't need a special occasion.
+        Sometimes just being part of each other's day
+        is enough to make it special.
+      </p>
+      <div class="folder-note">
+        "The best memories are made of little moments." 💞
+      </div>
+    </div>
+
+    <button class="back-btn" onclick="backToMemories()">
+      ← Back to Memories
+    </button>
+  </div>
+
+  <!-- Folder 4 -->
+  <div class="memory-folder" id="folder-future">
+    <div class="folder-icon">🧸</div>
+    <h2 class="folder-title">More to Come</h2>
+    <p class="folder-description">
+      This is not the end. There are so many pages left to write.
+    </p>
+
+    <div class="folder-content">
+      <h3>Our Next Chapters 📖</h3>
+      <p>
+        More conversations, more laughter,
+        more pictures, more songs, and more memories.
+      </p>
+      <p>
+        There is still so much waiting for us.
+      </p>
+    </div>
+
+    <div class="folder-content">
+      <h3>A Promise to the Future 💗</h3>
+      <p>
+        Let's keep collecting little moments
+        and turning them into beautiful memories.
+      </p>
+      <div class="folder-note">
+        "Our story is still being written..." ❤️
+      </div>
+    </div>
+
+    <button class="back-btn" onclick="backToMemories()">
+      ← Back to Memories
+    </button>
+  </div>
+
+</div>
 
 <!-- Songs -->
 <section id="songs" style="background:#fff5f7">
@@ -598,7 +841,6 @@ footer {
     <div style="font-size:40px">🎥</div>
     <h3 style="color:#a94e72">Our Little Memories</h3>
     <p>A memory worth watching again. ❤️</p>
-
     <video class="memory-video" controls playsinline preload="metadata">
       <source src="memory.mp4" type="video/mp4">
       Your browser does not support the video tag.
@@ -621,6 +863,61 @@ function openWebsite() {
   document.getElementById("intro").style.display = "none";
   document.getElementById("website").style.display = "block";
   window.scrollTo(0, 0);
+}
+
+// Open a memory folder as a separate page
+function openMemoryFolder(folderName) {
+  const mainElements = document.querySelectorAll(
+    "#website > nav, #website > section, #website > footer"
+  );
+
+  mainElements.forEach(function(element) {
+    element.style.display = "none";
+  });
+
+  document.getElementById("memoryPage").style.display = "block";
+
+  document.querySelectorAll(".memory-folder").forEach(function(folder) {
+    folder.style.display = "none";
+  });
+
+  document.getElementById("folder-" + folderName).style.display = "block";
+
+  window.scrollTo(0, 0);
+}
+
+// Back to the memories folders
+function backToMemories() {
+  document.getElementById("memoryPage").style.display = "none";
+
+  const mainElements = document.querySelectorAll(
+    "#website > nav, #website > section, #website > footer"
+  );
+
+  mainElements.forEach(function(element) {
+    element.style.display = "";
+  });
+
+  document.querySelectorAll(".memory-folder").forEach(function(folder) {
+    folder.style.display = "none";
+  });
+
+  setTimeout(function() {
+    document.getElementById("memories").scrollIntoView();
+  }, 50);
+}
+
+// Back to the main website
+function backToMain() {
+  document.getElementById("memoryPage").style.display = "none";
+
+  const mainElements = document.querySelectorAll(
+    "#website > nav, #website > section, #website > footer"
+  );
+
+  mainElements.forEach(function(element) {
+    element.style.display = "";
+  });
 }
 
 // Days counter
