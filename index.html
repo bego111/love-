@@ -556,7 +556,6 @@ footer {
   <a href="#letters" onclick="backToMain()">Letters</a>
   <a href="#days" onclick="backToMain()">Our Days</a>
   <a href="#surprises" onclick="backToMain()">Surprises</a>
-  <a href="#videos" onclick="backToMain()">Videos</a>
 </nav>
 
 <section class="hero" id="home">
@@ -750,6 +749,20 @@ footer {
       </div>
     </div>
 
+    <div class="folder-content">
+      <h3>A Little Memory 📸</h3>
+      <p>A picture worth keeping. ❤️</p>
+      <div class="memory-gallery">
+        <img src="favorite-moments-photo.jpg" alt="Favorite moment memory" onclick="openImage(this.src)">
+      </div>
+
+      <h3 style="margin-top:25px">A Memory to Watch 🎬</h3>
+      <video class="folder-video" controls playsinline preload="metadata">
+        <source src="memory.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
     <button class="back-btn" onclick="backToMemories()">
       ← Back to Memories
     </button>
@@ -925,23 +938,6 @@ footer {
   </button>
 
   <div id="surpriseMessage"></div>
-</section>
-
-<!-- VIDEOS -->
-<section id="videos">
-  <h2 class="section-title">Our Videos 🎬</h2>
-  <p class="subtitle">A place for moments we want to watch again.</p>
-
-  <div class="video-placeholder">
-    <div style="font-size:40px">🎥</div>
-    <h3 style="color:#a94e72">Our Little Memories</h3>
-    <p>A memory worth watching again. ❤️</p>
-
-    <video class="memory-video" controls playsinline preload="metadata">
-      <source src="memory.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
 </section>
 
 <footer>
